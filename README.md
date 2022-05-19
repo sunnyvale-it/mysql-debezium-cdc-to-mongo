@@ -30,12 +30,12 @@ $ docker exec -i kafka /opt/kafka/bin/kafka-console-consumer.sh \
 
 
 ```console
-$ docker exec -i mongodb mongo -u root -p password --quiet --eval  "db.getCollection('cdc').find().forEach(printjson)"
+$ docker exec -i mongodb mongo --authenticationDatabase admin -u root -p password --quiet --eval  "db.getCollection('cdc').find().forEach(printjson)" mongodb://localhost:27017/mydata
 ```
 
 
 ```console
-docker exec -i mongodb mongoimport --authenticationDatabase admin -u root -p password --db test --collection cdc <<EOF
+docker exec -i mongodb mongoimport --authenticationDatabase admin -u root -p password --db mydata --collection cdc <<EOF
 {
         "name": "denis"
 }

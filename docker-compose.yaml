@@ -63,6 +63,7 @@ services:
       - nificontent:/opt/nifi/nifi-current/content_repository
       - nifiprovenance:/opt/nifi/nifi-current/provenance_repository
       - nifilogs:/opt/nifi/nifi-current/logs
+      - ./nifi/templates:/opt/nifi/conf/templates/
     depends_on:
       - kafka
   mysql:
