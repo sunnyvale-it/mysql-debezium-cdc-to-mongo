@@ -35,7 +35,7 @@ $ docker exec -i mongodb mongo -u root -p password --quiet --eval  "db.getCollec
 
 
 ```console
-$ docker exec -i mongodb mongoimport --authenticationDatabase admin -u root -p password --db test --collection cdc <<EOF
+docker exec -i mongodb mongoimport --authenticationDatabase admin -u root -p password --db test --collection cdc <<EOF
 {
         "name": "denis"
 }
