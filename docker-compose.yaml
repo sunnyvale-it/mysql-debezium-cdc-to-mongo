@@ -45,6 +45,8 @@ services:
       - kafka
       - mysql
   nifi:
+    #image: apache/nifi
+    #platform: linux/amd64
     build:
       context: ./nifi
       dockerfile: Dockerfile
@@ -54,6 +56,13 @@ services:
       - "8080:8080" 
     environment:
        NIFI_WEB_HTTP_PORT: 8080
+    volumes: 
+      - nifistate:/opt/nifi/nifi-current/state
+      - nifidb:/opt/nifi/nifi-current/database_repository
+      - nififlowfile:/opt/nifi/nifi-current/flowfile_repository
+      - nificontent:/opt/nifi/nifi-current/content_repository
+      - nifiprovenance:/opt/nifi/nifi-current/provenance_repository
+      - nifilogs:/opt/nifi/nifi-current/logs
     depends_on:
       - kafka
   mysql:
@@ -86,3 +95,9 @@ services:
 volumes:
   dbdata:
   mongodata:
+  nifistate:
+  nifidb:
+  nififlowfile:
+  nificontent:
+  nifiprovenance:
+  nifilogs:
